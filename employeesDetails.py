@@ -4,6 +4,7 @@ import json
 from db_function import all_employees, delete_employee, add_employee, single_employee, edit_employee
 
 
+# for all the employees
 class allEmployeesInfo(Resource):
 
     def get(self):
@@ -28,10 +29,12 @@ class employeeInfo(Resource):
                         type=str,
                         required=False)
 
+    # individual employee details
     def get(self, id):
         employee_detail = single_employee(self, id)
         return employee_detail
 
+    # add new employee
     def post(self, id):
         new_employee = employeeInfo.parser.parse_args()
 
@@ -53,11 +56,13 @@ class employeeInfo(Resource):
         msg = add_employee(self, new_employee_detail)
         return msg
 
+    # edit employee detail
     def put(self, id):
         new_employee = employeeInfo.parser.parse_args()
         msg = edit_employee(self, new_employee, id)
         return msg
 
+    # delete employee detail
     def delete(self, id):
         msg = delete_employee(self, id)
         if msg is None:

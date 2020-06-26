@@ -8,6 +8,7 @@ dynamodb_resource = boto3.resource('dynamodb', region_name='us-west-2')
 dynamodb_client = boto3.client('dynamodb', region_name='us-west-2')
 
 
+# give all the details from the table
 def all_employees(self):
     employeesDetails = []
 
@@ -31,6 +32,7 @@ def all_employees(self):
         return e
 
 
+# give individual detail
 def single_employee(self, id):
     try:
         response = dynamodb_client.get_item(
@@ -61,6 +63,7 @@ def single_employee(self, id):
         return e
 
 
+# add new employee detail to the table
 def add_employee(self, data):
 
     try:
@@ -94,6 +97,7 @@ def add_employee(self, data):
         return e
 
 
+# modify the existing detail of particular employee
 def edit_employee(self, data, id):
 
     try:
@@ -133,6 +137,7 @@ def edit_employee(self, data, id):
         return e
 
 
+# delete the employee from the table
 def delete_employee(self, id):
     try:
         table = dynamodb_resource.Table('rishav-employees-data')
