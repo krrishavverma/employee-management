@@ -66,6 +66,6 @@ class employeeInfo(Resource):
     def delete(self, id):
         msg = delete_employee(self, id)
         if msg is None:
-            return ("Caught exception : Requested resource not found while deleting data from user_details table"), 400
+            return ("Caught exception : Requested resource not found while deleting data table"), 400
         else:
             return msg

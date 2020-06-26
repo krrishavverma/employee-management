@@ -87,7 +87,6 @@ def add_employee(self, data):
             table.put_item(
                 Item=data
             )
-            print(type(data))
             return data
         except Exception as e:
             return e
